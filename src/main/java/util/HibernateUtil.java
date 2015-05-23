@@ -7,14 +7,14 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
- public static SessionFactory getSessionFactory() {
-  Configuration configuration = new Configuration().configure();
-  
-  ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-    .applySettings(configuration.getProperties()).build();
-  
-  SessionFactory sessionFactory = configuration
-    .buildSessionFactory(serviceRegistry);
-  return sessionFactory;
- }
+	public static SessionFactory getSessionFactory() {
+		Configuration configuration = new Configuration().configure();
+
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+				.applySettings(configuration.getProperties()).build();
+
+		SessionFactory sessionFactory = configuration
+				.buildSessionFactory(serviceRegistry);
+		return sessionFactory;
+	}
 }
