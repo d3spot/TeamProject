@@ -11,6 +11,6 @@
                 <property name="hibernate.connection.username">root</property>
                 <property name="hibernate.connection.password"></property>
 
-                
+                <mapping class="table.Message"/>
         </session-factory>
 </hibernate-configuration>
