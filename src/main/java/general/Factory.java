@@ -1,12 +1,12 @@
 package general;
 
-import dao.MessageEmployee;
+import dao.MessageUser;
 import dao.daoImpl.MessageEmployeeImpl;
 
 public class Factory {
 
 	private static Factory instatce = new Factory();
-	private MessageEmployee messageEmployee;
+	private MessageUser messageEmployee;
 
 	private Factory() {
 	}
@@ -15,7 +15,7 @@ public class Factory {
 		return Factory.instatce;
 	}
 
-	public MessageEmployee getMessageEmployee() {
+	public MessageUser getMessageEmployee() {
 		if (messageEmployee == null) {
 			messageEmployee = new MessageEmployeeImpl();
 		}

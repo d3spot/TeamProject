@@ -1,7 +1,7 @@
 package dao.daoImpl;
 
-import dao.MessageEmployee;
+import dao.MessageUser;
 
-public class MessageEmployeeImpl implements MessageEmployee{
+public class MessageEmployeeImpl implements MessageUser{
 
 }
