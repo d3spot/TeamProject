@@ -13,5 +13,8 @@
 
                 <mapping class="table.Message"/>
                 <mapping class="table.Salary"/>
+                <mapping class="table.User"/>
+                <mapping class="table.Role"/>
+                <mapping class="table.News"/>
         </session-factory>
 </hibernate-configuration>
