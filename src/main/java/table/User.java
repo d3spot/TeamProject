@@ -54,6 +54,8 @@ public class User {
 	
 	
 	
+	// додай lazy ініціалізацію :) 
+	
 	@OneToMany(mappedBy = "sender")
 	private List<Message> sendedMessages;
 	

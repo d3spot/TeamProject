@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Message {
@@ -12,8 +14,14 @@ public class Message {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String content;
-	private Employee receiver;
-	private Employee sender;
+	@ManyToOne
+	@JoinColumn(name="messageReceiver")
+	private User receiver;
+	@ManyToOne
+	@JoinColumn(name="messageSender")
+	private User sender;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -26,16 +34,16 @@ public class Message {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Employee getReceiver() {
+	public User getReceiver() {
 		return receiver;
 	}
-	public void setReceiver(Employee receiver) {
+	public void setReceiver(User receiver) {
 		this.receiver = receiver;
 	}
-	public Employee getSender() {
+	public User getSender() {
 		return sender;
 	}
-	public void setSender(Employee sender) {
+	public void setSender(User sender) {
 		this.sender = sender;
 	}
 	
