@@ -15,20 +15,21 @@ public class Salary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column
+	@Column(nullable = false)
 	private Date month;
-	@Column
+	@Column(nullable = false)
 	private Double amount;
 	@ManyToOne
-	@JoinColumn(name = "emloyee_id")
-	private Employee eployee;
+	@JoinColumn(name = "userId")
+	private User user;
 
 	public Salary() {
 	}
 
-	public Salary(Date month, Double amount) {
+	public Salary(Date month, Double amount, User user) {
 		this.month = month;
 		this.amount = amount;
+		this.user=user;
 	}
 
 	public Integer getId() {
@@ -55,12 +56,12 @@ public class Salary {
 		this.amount = amount;
 	}
 
-	public Employee getEployee() {
-		return eployee;
+	public User getUser() {
+		return user;
 	}
 
-	public void setEployee(Employee eployee) {
-		this.eployee = eployee;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
