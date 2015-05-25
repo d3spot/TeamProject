@@ -1,12 +1,14 @@
 package general;
 
+import table.Message;
 import dao.MessageUser;
-import dao.daoImpl.MessageEmployeeImpl;
+import dao.daoImpl.MessageUserImpl;
 
 public class Factory {
 
 	private static Factory instatce = new Factory();
-	private MessageUser messageEmployee;
+	
+	private MessageUserImpl messageUser;
 
 	private Factory() {
 	}
@@ -15,11 +17,11 @@ public class Factory {
 		return Factory.instatce;
 	}
 
-	public MessageUser getMessageEmployee() {
-		if (messageEmployee == null) {
-			messageEmployee = new MessageEmployeeImpl();
+	public MessageUser getMessageUser() {
+		if (messageUser == null) {
+			messageUser = new MessageUserImpl(Message.class);
 		}
-		return messageEmployee;
+		return (MessageUser) messageUser;
 	}
 
 }
