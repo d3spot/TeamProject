@@ -2,28 +2,29 @@ package table;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Schedule {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "schedule_id")
 	private Integer id;
-	private String name;
 	private Date date;
+	@OneToMany(mappedBy = "schedule")
+	private List<Event> events;
 	
 	public Schedule() {
 		
 	}
 	
-	public Schedule(String name, Date date) {
-		this.name = name;
+	public Schedule(Date date) {
 		this.date = date;
 	}
 
@@ -35,14 +36,6 @@ public class Schedule {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Date getDate() {
 		return date;
 	}
@@ -50,9 +43,13 @@ public class Schedule {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
-	
-	
 
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+	
 }

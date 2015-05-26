@@ -1,20 +1,23 @@
 package table;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Type {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "type_id")
 	private Integer id;
 	private String name;
 	private Boolean isPersonal;
+	@OneToMany(mappedBy = "type")
+	private List<Event> events;
 	
 	public Type() {
 		
@@ -48,10 +51,13 @@ public class Type {
 	public void setIsPersonal(Boolean isPersonal) {
 		this.isPersonal = isPersonal;
 	}
-	
-	
-	
-	
-	
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
 	
 }

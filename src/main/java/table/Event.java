@@ -2,11 +2,17 @@ package table;
 
 import java.sql.Time;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -18,12 +24,17 @@ public class Event {
 	private Time timeFrom;
 	private Time duration;
 	@ManyToOne
-	@JoinColumn(name = "type_id")
+	@JoinColumn(name = "typeId")
 	private Type type;
 	@ManyToOne
-	@JoinColumn(name = "schedule_id")
+	@JoinColumn(name = "scheduleId")
 	private Schedule schedule;
 	private Boolean isConfirmed;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "EventUser", joinColumns = {
+			@JoinColumn(name = "eventId", nullable = false, updatable = false)},
+			inverseJoinColumns = {@JoinColumn(name = "userId", nullable = false, updatable = false)})
+	private List<User> users;
 	
 	public Event() {
 		
@@ -85,10 +96,13 @@ public class Event {
 	public void setIsConfirmed(Boolean isConfirmed) {
 		this.isConfirmed = isConfirmed;
 	}
-	
-	
-	
-	
-	
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
 }
