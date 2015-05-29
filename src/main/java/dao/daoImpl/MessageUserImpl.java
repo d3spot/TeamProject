@@ -10,7 +10,7 @@ import util.HibernateUtil;
 import dao.MainDao;
 import dao.MessageUser;
 
-public class MessageUserImpl extends MainDaoImpl<Message> implements  MainDao<Message> {
+public class MessageUserImpl extends MainDaoImpl<Message> implements  MainDao<Message>{
 	public MessageUserImpl(Class<Message> elementClass) {
 		super(Message.class);
 		}
