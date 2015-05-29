@@ -17,11 +17,11 @@ public class Factory {
 		return Factory.instatce;
 	}
 
-	public MessageUser getMessageUser() {
+	public MessageUserImpl getMessageUser() {
 		if (messageUser == null) {
 			messageUser = new MessageUserImpl();
 		}
-		return (MessageUser) messageUser;
+		return  messageUser;
 	}
 
 }

@@ -1,5 +1,7 @@
 package table;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ public class Message {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	private Date messageTime;
 	private String content;
 	@ManyToOne
 	@JoinColumn(name="messageReceiver")
@@ -22,6 +25,12 @@ public class Message {
 	private User sender;
 	
 	
+	public Date getMessageTime() {
+		return messageTime;
+	}
+	public void setMessageTime(Date messageTime) {
+		this.messageTime = messageTime;
+	}
 	public long getId() {
 		return id;
 	}
