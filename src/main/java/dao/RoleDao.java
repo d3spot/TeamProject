@@ -2,6 +2,6 @@ package dao;
 
 import table.Role;
 
-public interface RoleDao{
-	public Role getRoleById(int id);
+public interface RoleDao extends MainDao<Role>{
+	
 }

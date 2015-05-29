@@ -2,67 +2,36 @@ package dao.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import table.News;
 import table.User;
+import util.HibernateUtil;
 import dao.MainDao;
 import dao.NewsDao;
 
 public class NewsDaoImpl extends MainDaoImpl<News> implements NewsDao{
 
-	public NewsDaoImpl(Class<News> elementClass) {
-		super(elementClass);
-		// TODO Auto-generated constructor stub
+	public NewsDaoImpl() {
+		super(News.class);
 	}
 
-
-	public void add(News element) {
-		// TODO Auto-generated method stub
-		super.add(element);
+	public List<News> getNewsByUserId(long id) {
+		Session session = null;
+		List<News> news;
+		try{
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			news = (List<News>)session.createSQLQuery("Select * from News as n Where n.user.userId=:id").setParameter("id",id).list();
+			transaction.commit();
+		}finally{
+			if ((session != null) && (session.isOpen())) {
+			}
+		}
+		return news;
 	}
-
 	
-	public void update(News element) {
-		// TODO Auto-generated method stub
-		super.update(element);
-	}
-
-	
-	public News getByID(Long elementId) {
-		// TODO Auto-generated method stub
-		return super.getByID(elementId);
-	}
-
-	public List<News> getAll() {
-		// TODO Auto-generated method stub
-		return super.getAll();
-	}
-
-	
-	public void delete(News element) {
-		// TODO Auto-generated method stub
-		super.delete(element);
-	}
-
-
-	public News getNewsById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public News getNewsByUserId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getContentById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public User getUserByNewsId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 	
