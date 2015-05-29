@@ -19,7 +19,7 @@ public class Factory {
 
 	public MessageUser getMessageUser() {
 		if (messageUser == null) {
-			messageUser = new MessageUserImpl(Message.class);
+			messageUser = new MessageUserImpl();
 		}
 		return (MessageUser) messageUser;
 	}
