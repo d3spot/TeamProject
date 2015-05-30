@@ -63,7 +63,10 @@ public class User {
 	@OneToMany(mappedBy = "receiver")
 	private List<Message> receivedMessages;
 
-
+	
+	public User(){
+	};
+	
 	public User(String firstName, String lastName, Integer age, String email,
 			String password) {
 		this.firstName = firstName;
@@ -192,24 +195,6 @@ public class User {
 		this.receivedMessages = receivedMessages;
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
 }
 
 

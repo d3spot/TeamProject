@@ -1,5 +1,7 @@
 package table;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +18,20 @@ public class News {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long newsId;
 	private String content;
+	private Date timeOfPublishing;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User user;
 	
-	public News(String content, User user) {
+	
+	public News(){
+	}
+	public News(String content, User user, Date timeOfPublishing) {
 		this.content = content;
 		this.user = user;
+		this.timeOfPublishing = timeOfPublishing;
 	}
 	
 	public Long getNewsId() {
@@ -48,6 +56,12 @@ public class News {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public Date getTimeOfPublishing() {
+		return timeOfPublishing;
+	}
+	public void setTimeOfPublishing(Date timeOfPublishing) {
+		this.timeOfPublishing = timeOfPublishing;
 	}
 
 
