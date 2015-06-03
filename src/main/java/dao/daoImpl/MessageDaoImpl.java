@@ -5,17 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import table.Message;
 import table.User;
 import util.HibernateUtil;
-import dao.MainDao;
-import dao.MessageUser;
+import dao.MessageDao;
 
-public class MessageUserImpl extends MainDaoImpl<Message> implements
-		MainDao<Message> {
-	public MessageUserImpl() {
+public class MessageDaoImpl extends MainDaoImpl<Message> implements
+		MessageDao {
+	public MessageDaoImpl() {
 		super(Message.class);
 	}
 

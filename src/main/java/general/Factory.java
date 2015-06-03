@@ -1,8 +1,8 @@
 package general;
 
 import table.Message;
-import dao.MessageUser;
-import dao.daoImpl.MessageUserImpl;
+import dao.MessageDao;
+import dao.daoImpl.MessageDaoImpl;
 import dao.daoImpl.NewsDaoImpl;
 import dao.daoImpl.RateDaoImpl;
 import dao.daoImpl.RoleDaoImpl;
@@ -13,7 +13,7 @@ public class Factory {
 
 	private static Factory instatce = new Factory();
 	
-	private MessageUserImpl messageUser;
+	private MessageDaoImpl messageUser;
 	private UserDaoImpl userImpl;
 	private RoleDaoImpl roleImpl;
 	private NewsDaoImpl newsImpl;
@@ -28,9 +28,9 @@ public class Factory {
 		return Factory.instatce;
 	}
 
-	public MessageUserImpl getMessageUser() {
+	public MessageDaoImpl getMessageUser() {
 		if (messageUser == null) {
-			messageUser = new MessageUserImpl();
+			messageUser = new MessageDaoImpl();
 		}
 		return  messageUser;
 	}
