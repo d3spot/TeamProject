@@ -24,7 +24,7 @@ public class Role {
 	@JoinTable(name = "UserRole",joinColumns={ 
 			@JoinColumn(name = "roleId",nullable = false)},
 			inverseJoinColumns = {@JoinColumn(name = "userId", nullable = false)})
-	private List<Role> users;
+	private List<User> users;
 	
 	
 	
