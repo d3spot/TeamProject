@@ -17,7 +17,7 @@ public class Program {
 //		Factory factory =Factory.getFactory();
 //		Salary salary=new Salary(Month.JULY,10000.0);
 //		factory.getSalaryImpl().add(salary);
-//		System.out.println(factory.getSalaryImpl().getByID((long) 10));
+//		System.out.println(factory.getSalaryImpl().getByID((long) 1));
 //		factory.getSalaryImpl().delete(salary);
 //		salary.setMonth(Month.NOVEMBER);
 //		factory.getSalaryImpl().update(salary);

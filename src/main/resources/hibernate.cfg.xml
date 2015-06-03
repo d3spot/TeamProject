@@ -19,5 +19,6 @@
                 <mapping class="table.Event"/>
                 <mapping class="table.Type"/>
                 <mapping class="table.Schedule"/>
+                <mapping class="table.Rate"/>
         </session-factory>
 </hibernate-configuration>
