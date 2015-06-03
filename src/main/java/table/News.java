@@ -16,7 +16,7 @@ public class News {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long newsId;
+	private Long id;
 	private String content;
 	private Date timeOfPublishing;
 	
@@ -34,12 +34,12 @@ public class News {
 		this.timeOfPublishing = timeOfPublishing;
 	}
 	
-	public Long getNewsId() {
-		return newsId;
+	public Long getid() {
+		return id;
 	}
 
-	public void setNewsId(Long newsId) {
-		this.newsId = newsId;
+	public void setid(Long id) {
+		this.id = id;
 	}
 
 	public String getContent() {

@@ -21,7 +21,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long userId;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private Integer age;
@@ -33,14 +33,14 @@ public class User {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "UserRole",joinColumns={ 
-			@JoinColumn(name = "userId",nullable = false)},
+			@JoinColumn(name = "id",nullable = false)},
 			inverseJoinColumns = {@JoinColumn(name = "roleId", nullable = false)})
 	private List<Role> roles;
 	
 	
 	@ManyToMany
 	@JoinTable(name = "EventUser", joinColumns = {
-			@JoinColumn(name = "userId", nullable = false)},
+			@JoinColumn(name = "id", nullable = false)},
 			inverseJoinColumns = {@JoinColumn(name = "eventId", nullable = false)})
 	private List<Event> events;
 	
@@ -76,13 +76,13 @@ public class User {
 		this.password = password;
 	}
 	
-	public Long getUserId() {
-		return userId;
+	public Long getid() {
+		return id;
 	}
 
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setid(Long id) {
+		this.id = id;
 	}
 
 

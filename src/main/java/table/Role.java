@@ -17,12 +17,12 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long roleId;
+	private Long id;
 	private String roleTitle;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "UserRole",joinColumns={ 
-			@JoinColumn(name = "roleId",nullable = false)},
+			@JoinColumn(name = "id",nullable = false)},
 			inverseJoinColumns = {@JoinColumn(name = "userId", nullable = false)})
 	private List<User> users;
 	
@@ -30,17 +30,17 @@ public class Role {
 	
 	public Role(){
 	}
-	public Role(Long roleId, String roleTtile) {
-		this.roleId = roleId;
+	public Role(Long id, String roleTtile) {
+		this.id = id;
 		this.roleTitle = roleTtile;
 	}
 	
 	
-	public Long getRoleId() {
-		return roleId;
+	public Long getid() {
+		return id;
 	}
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
+	public void setid(Long id) {
+		this.id = id;
 	}
 	public String getRoleTtile() {
 		return roleTitle;
