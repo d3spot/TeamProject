@@ -14,14 +14,14 @@ public class Program {
 	public static void main(String[] args) {
 		
 //		TESTING SALARY
-		Factory factory =Factory.getFactory();
+//		Factory factory =Factory.getFactory();
 //		Salary salary=new Salary(Month.JULY,10000.0);
 //		factory.getSalaryImpl().add(salary);
-//		factory.getSalaryImpl().getByID((long) 1);
+//		System.out.println(factory.getSalaryImpl().getByID((long) 10));
 //		factory.getSalaryImpl().delete(salary);
 //		salary.setMonth(Month.NOVEMBER);
 //		factory.getSalaryImpl().update(salary);
-//		factory.getSalaryImpl().getAll();
+//		List<Salary> a=factory.getSalaryImpl().getAll();
 //		List<Salary> a=factory.getSalaryImpl().getAllByMonth(Month.JUNE);
 //		Iterator<Salary> iter = a.iterator();
 //		while (iter.hasNext()) {
