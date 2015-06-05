@@ -13,32 +13,35 @@ import table.User;
 public class Program {
 	public static void main(String[] args) {
 
-		// TESTING SALARY
 		// Factory factory =Factory.getFactory();
 
-		SalaryDaoImpl salaryDao = new SalaryDaoImpl();
+		// TESTING SALARY
+		// SalaryDaoImpl salaryDao = new SalaryDaoImpl();
+		// UserDaoImpl userDao = new UserDaoImpl();
+		// User user =new User("sbdvv","afsafa",23,"fa","df");
+		// User user1 =new User("sbdvv","afsafa",23,"fagfg","dfssdhgf");
+		// Salary salary = new Salary(Month.DECEMBER, 20000.0,user);
+		// Salary salary1 = new Salary(Month.AUGUST, 5000.0,user1);
+		// Salary salary2 = new Salary(Month.DECEMBER, 1000.0,user);
+		// Salary salary3 = new Salary(Month.JANUARY, 20000.0,user1);
+		// userDao.add(user);
+		// userDao.add(user1);
+		// salaryDao.add(salary);
+		// salaryDao.add(salary1);
+		// salaryDao.add(salary2);
+		// salaryDao.add(salary3);
 
-		Salary salary = new Salary(Month.JULY, 20000.0);
-		salaryDao.add(salary);
-		System.out.println(salaryDao.getByID(1L).getAmount());
-		// factory.getSalaryImpl().delete(salary);
-		// salary.setMonth(Month.NOVEMBER);
-		// factory.getSalaryImpl().update(salary);
-		// List<Salary> a=factory.getSalaryImpl().getAll();
-		// List<Salary> a=factory.getSalaryImpl().getAllByMonth(Month.JUNE);
+		// System.out.println(salaryDao.getByID(4));
+		// List<Salary> a = salaryDao.getAll();
+		// List<Salary> a = salaryDao.getAllByMonth(Month.DECEMBER);
+		// List<Salary> a = salaryDao.getAllByUser(userDao.getByID(5L));
 		// Iterator<Salary> iter = a.iterator();
 		// while (iter.hasNext()) {
 		// Salary g = iter.next();
 		// System.out.println(g);
 		// }
-		// User user=new User();
-		// user.setUserId((long) 11);
-		// System.out.println(factory.getSalaryImpl().getSalaryByUserForMonth(user,
-		// Month.JUNE));
-		
-//		for (Salary s : salaryDao.getAll()) {
-//			System.out.println(s.getMonth() + " " + s.getAmount());
-//		}
+		// System.out.println(salaryDao.getSalaryByUserForMonth(
+		// userDao.getByID(5L), Month.DECEMBER).getAmount());
 
 		// TESTING MESSAGE
 		// Message message = new Message();
@@ -58,7 +61,7 @@ public class Program {
 		//
 
 		System.out.println("good");
-		//SOmething
+		// SOmething
 
 	}
 }

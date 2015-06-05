@@ -16,21 +16,21 @@ import table.User;
 import util.HibernateUtil;
 
 @Repository
-public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
-		MainDao<Salary, Long>, SalaryDao {
+public class SalaryDaoImpl extends MainDaoImpl<Salary, Integer> implements
+		SalaryDao {
 
 	public SalaryDaoImpl() {
 		super(Salary.class);
 	}
 
-	
 	@Transactional
 	public List<Salary> getAllByMonth(Month month) {
 		Session session = null;
 		List<Salary> salary = new ArrayList<Salary>();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			salary = session.createSQLQuery("Select* From Salary as u Where u.month =:month").addEntity(Salary.class).setParameter("month", month).list();
+			salary = session.createQuery("From Salary Where month =:month")
+					.setParameter("month", month).list();
 		} finally {
 			if ((session != null) && (session.isOpen())) {
 				session.close();
@@ -39,14 +39,14 @@ public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
 		return salary;
 	}
 
-	
 	@Transactional
 	public List<Salary> getAllByUser(User user) {
 		Session session = null;
 		List<Salary> salary = new ArrayList<Salary>();
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			salary = session.createQuery("Select From Salary as s Where s.user =:user").setParameter("user", user).list();
+			salary = session.createQuery("From Salary Where user =:user")
+					.setParameter("user", user).list();
 		} finally {
 			if ((session != null) && (session.isOpen())) {
 				session.close();
@@ -56,14 +56,17 @@ public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
 
 	}
 
-	
 	@Transactional
 	public Salary getSalaryByUserForMonth(User user, Month month) {
 		Session session = null;
 		Salary salary = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			salary = (Salary)session.createQuery("From Salary Where userId=:user And month =:month").setParameter("user", user).setParameter("month", month).uniqueResult();
+			salary = (Salary) session
+					.createQuery(
+							"From Salary Where user=:user And month =:month")
+					.setParameter("user", user).setParameter("month", month)
+					.uniqueResult();
 		} finally {
 			if ((session != null) && (session.isOpen())) {
 				session.close();

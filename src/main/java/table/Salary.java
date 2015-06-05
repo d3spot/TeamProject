@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 public class Salary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	@Column(nullable = false)
 	private Month month;
 	@Column(nullable = false)
@@ -30,11 +30,17 @@ public class Salary {
 		this.amount = amount;
 	}
 
-	public Long getId() {
+	public Salary(Month month, Double amount, User user) {
+		this.month = month;
+		this.amount = amount;
+		this.user = user;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -64,9 +70,8 @@ public class Salary {
 
 	@Override
 	public String toString() {
-		return "Salary [month=" + month + ", amount=" + amount + ", user="
-				+ user + "]";
+		return "Salary in month " + month + ", amount=" + amount + ", user "
+				+ user.getFirstName() + " "+user.getLastName();
 	}
 
-	
 }

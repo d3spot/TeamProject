@@ -8,7 +8,7 @@ import table.Role;
 import table.Salary;
 import table.User;
 
-public interface SalaryDao extends MainDao<Salary, Long>{
+public interface SalaryDao extends MainDao<Salary, Integer>{
 
 	public List<Salary> getAllByMonth(Month month);
 
