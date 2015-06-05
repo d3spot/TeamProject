@@ -13,7 +13,7 @@ import table.Type;
 import table.User;
 import util.HibernateUtil;
 
-public class EventDaoImpl extends MainDaoImpl<Event> implements EventDao {
+public class EventDaoImpl extends MainDaoImpl<Event, Integer> implements EventDao {
 
 	public EventDaoImpl() {
 		super(Event.class);

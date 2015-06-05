@@ -11,7 +11,7 @@ import table.User;
 import util.HibernateUtil;
 import dao.MessageDao;
 
-public class MessageDaoImpl extends MainDaoImpl<Message> implements
+public class MessageDaoImpl extends MainDaoImpl<Message, Long> implements
 		MessageDao {
 	public MessageDaoImpl() {
 		super(Message.class);

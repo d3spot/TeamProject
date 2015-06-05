@@ -2,7 +2,7 @@ package dao;
 
 import table.User;
 
-public interface UserDao extends MainDao<User>{
+public interface UserDao extends MainDao<User, Long>{
 	
 	public String getFirstNameById(long  id);
 	

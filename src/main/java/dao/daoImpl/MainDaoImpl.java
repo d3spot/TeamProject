@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import util.HibernateUtil;
 import dao.MainDao;
 
-public class MainDaoImpl<E> implements MainDao<E> {
+public class MainDaoImpl<E, N extends Number> implements MainDao<E, N> {
 
 	private Class<E> elementClass;
 
@@ -45,7 +45,7 @@ public class MainDaoImpl<E> implements MainDao<E> {
 		}
 	}
 
-	public E getByID(Long elementId) {
+	public E getByID(N elementId) {
 		Session session = null;
 		E element = null;
 		try {
@@ -86,4 +86,6 @@ public class MainDaoImpl<E> implements MainDao<E> {
 			}
 		}
 	}
+
+	
 }

@@ -7,7 +7,7 @@ import table.Event;
 import table.Type;
 import table.User;
 
-public interface EventDao extends MainDao<Event> {
+public interface EventDao extends MainDao<Event, Integer> {
 	
 	public List<Event> getEventsByDate(Date date);
 	

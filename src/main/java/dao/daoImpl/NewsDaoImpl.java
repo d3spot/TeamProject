@@ -12,7 +12,7 @@ import util.HibernateUtil;
 import dao.MainDao;
 import dao.NewsDao;
 
-public class NewsDaoImpl extends MainDaoImpl<News> implements NewsDao{
+public class NewsDaoImpl extends MainDaoImpl<News, Long> implements NewsDao{
 
 	public NewsDaoImpl() {
 		super(News.class);

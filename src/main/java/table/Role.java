@@ -17,7 +17,7 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	private String roleTitle;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -30,16 +30,16 @@ public class Role {
 	
 	public Role(){
 	}
-	public Role(Long id, String roleTtile) {
+	public Role(Integer id, String roleTtile) {
 		this.id = id;
 		this.roleTitle = roleTtile;
 	}
 	
 	
-	public Long getid() {
+	public Integer getid() {
 		return id;
 	}
-	public void setid(Long id) {
+	public void setid(Integer id) {
 		this.id = id;
 	}
 	public String getRoleTtile() {

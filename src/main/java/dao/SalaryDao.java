@@ -4,10 +4,11 @@ import java.time.Month;
 import java.util.Date;
 import java.util.List;
 
+import table.Role;
 import table.Salary;
 import table.User;
 
-public interface SalaryDao {
+public interface SalaryDao extends MainDao<Salary, Long>{
 
 	public List<Salary> getAllByMonth(Month month);
 

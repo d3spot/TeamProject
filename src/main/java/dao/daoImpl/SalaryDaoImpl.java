@@ -13,8 +13,8 @@ import table.Salary;
 import table.User;
 import util.HibernateUtil;
 
-public class SalaryDaoImpl extends MainDaoImpl<Salary> implements
-		MainDao<Salary>, SalaryDao {
+public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
+		MainDao<Salary, Long>, SalaryDao {
 
 	public SalaryDaoImpl() {
 		super(Salary.class);

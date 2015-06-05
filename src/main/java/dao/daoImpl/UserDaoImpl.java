@@ -9,7 +9,7 @@ import dao.UserDao;
 import table.User;
 import util.HibernateUtil;
 
-public class UserDaoImpl extends MainDaoImpl<User> implements UserDao{
+public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 
 	public UserDaoImpl() {
 		super(User.class);

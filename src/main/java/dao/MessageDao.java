@@ -6,7 +6,7 @@ import java.util.List;
 import table.Message;
 import table.User;
 
-public interface MessageDao extends MainDao<Message> {
+public interface MessageDao extends MainDao<Message, Long> {
 	
 	public List<Message> getMessageFromDate(Date date);
 
