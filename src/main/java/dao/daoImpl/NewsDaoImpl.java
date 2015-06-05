@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import table.News;
 import table.User;
@@ -12,12 +14,16 @@ import util.HibernateUtil;
 import dao.MainDao;
 import dao.NewsDao;
 
+
+@Repository
 public class NewsDaoImpl extends MainDaoImpl<News, Long> implements NewsDao{
 
 	public NewsDaoImpl() {
 		super(News.class);
 	}
 
+	
+	@Transactional
 	public List<News> getNewsByUserId(long id) {
 		Session session = null;
 		List<News> news;
@@ -33,6 +39,8 @@ public class NewsDaoImpl extends MainDaoImpl<News, Long> implements NewsDao{
 		return news;
 	}
 
+	
+	@Transactional
 	public List<News> getNewsFromTo(Date a, Date b) {
 		Session session = null;
 		List<News> news;

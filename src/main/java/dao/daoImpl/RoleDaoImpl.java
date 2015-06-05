@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import table.Role;
 import table.User;
@@ -11,12 +13,16 @@ import util.HibernateUtil;
 import dao.MainDao;
 import dao.RoleDao;
 
+
+@Repository
 public class RoleDaoImpl extends MainDaoImpl<Role, Integer> implements RoleDao{
 
 	public RoleDaoImpl() {
 		super(Role.class);
 	}
 
+	
+	@Transactional
 	public List<Role> getRolesOfUser(Integer userId) {
 		Session session = null;
 		List<Role> roles;
@@ -34,6 +40,8 @@ public class RoleDaoImpl extends MainDaoImpl<Role, Integer> implements RoleDao{
 		return roles;
 	}
 
+	
+	@Transactional
 	public List<User> getUsersByRole(String roleTitle) {
 		Session session = null;
 		List<User> users;

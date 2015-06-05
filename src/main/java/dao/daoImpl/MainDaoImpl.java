@@ -3,8 +3,13 @@ package dao.daoImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.transaction.annotation.Transactional;
 
 import util.HibernateUtil;
 import dao.MainDao;
@@ -12,25 +17,26 @@ import dao.MainDao;
 public class MainDaoImpl<E, N extends Number> implements MainDao<E, N> {
 
 	private Class<E> elementClass;
+	private Class<E> entityClass;
 
 	public MainDaoImpl(Class<E> elementClass) {
 		this.elementClass = elementClass;
 	}
+	
+	
+	@PersistenceContext(name = "logos")
+	EntityManager entityManager;
 
+	@Transactional
 	public void add(E element) {
-		Session session = null;
-
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			Transaction transaction = session.beginTransaction();
-			session.save(element);
-			transaction.commit();
-		} finally {
-			if ((session != null) && (session.isOpen())) {
-			}
-		}
+		entityManager.persist(element);
+		entityManager.flush();
 	}
-
+	
+	
+	
+	//Не перекидується на EntityManager
+	@Transactional
 	public void update(E element) {
 		Session session = null;
 		try {
@@ -45,46 +51,24 @@ public class MainDaoImpl<E, N extends Number> implements MainDao<E, N> {
 		}
 	}
 
+	@Transactional
 	public E getByID(N elementId) {
-		Session session = null;
-		E element = null;
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			element = (E) session.get(elementClass, elementId);
-		} finally {
-			if ((session != null) && (session.isOpen())) {
-				session.close();
-			}
+			return (E) entityManager.createQuery("select e from " + entityClass.getSimpleName() + " e where e.id = :id")
+					.setParameter("id", elementId).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
 		}
-		return element;
 	}
 
+	@Transactional
 	public List<E> getAll() {
-		Session session = null;
-		List<E> elements = new ArrayList<E>();
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			elements = session.createCriteria(elementClass).list();
-		} finally {
-			if ((session != null) && (session.isOpen())) {
-				session.close();
-			}
-		}
-		return elements;
+		return entityManager.createQuery("from " + entityClass.getSimpleName()).getResultList();
 	}
 
+	@Transactional
 	public void delete(E element) {
-		Session session = null;
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			Transaction transaction = session.beginTransaction();
-			session.delete(element);
-			transaction.commit();
-		} finally {
-			if ((session != null) && (session.isOpen())) {
-				session.close();
-			}
-		}
+		entityManager.remove(entityManager.merge(element));
 	}
 
 	

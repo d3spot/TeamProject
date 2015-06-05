@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.MainDao;
 import dao.SalaryDao;
@@ -13,6 +15,7 @@ import table.Salary;
 import table.User;
 import util.HibernateUtil;
 
+@Repository
 public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
 		MainDao<Salary, Long>, SalaryDao {
 
@@ -20,6 +23,8 @@ public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
 		super(Salary.class);
 	}
 
+	
+	@Transactional
 	public List<Salary> getAllByMonth(Month month) {
 		Session session = null;
 		List<Salary> salary = new ArrayList<Salary>();
@@ -34,6 +39,8 @@ public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
 		return salary;
 	}
 
+	
+	@Transactional
 	public List<Salary> getAllByUser(User user) {
 		Session session = null;
 		List<Salary> salary = new ArrayList<Salary>();
@@ -49,6 +56,8 @@ public class SalaryDaoImpl extends MainDaoImpl<Salary, Long> implements
 
 	}
 
+	
+	@Transactional
 	public Salary getSalaryByUserForMonth(User user, Month month) {
 		Session session = null;
 		Salary salary = null;

@@ -4,17 +4,22 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.UserDao;
 import table.User;
 import util.HibernateUtil;
 
+@Repository
 public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
-
+	
 	public UserDaoImpl() {
 		super(User.class);
 	}
-
+	
+	
+	@Transactional
 	public String getFirstNameById(long id) {
 		Session session = null;
 		String fname = "";
@@ -31,7 +36,9 @@ public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 		}
 		return fname;
 	}
-
+	
+	
+	@Transactional
 	public String getLastNameById(long id) {
 		Session session = null;
 		String lname = "";
@@ -49,6 +56,8 @@ public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 		return lname;
 	}
 
+	
+	@Transactional
 	public int getAgeById(long id) {
 		Session session = null;
 		int age;
@@ -65,7 +74,9 @@ public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 		}
 		return age;
 	}
-
+	
+	
+	@Transactional
 	public String getEmailById(long id) {
 		Session session = null;
 		String email = "";
@@ -83,6 +94,8 @@ public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 		return email;
 	}
 
+	
+	@Transactional
 	public String getPasswordById(long id) {
 		Session session = null;
 		String password = "";
@@ -100,6 +113,8 @@ public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 		return password;
 	}
 
+	
+	@Transactional
 	public String getEmailByFirstLastName(String firstName, String lastName) {
 		Session session = null;
 		String email = "";
@@ -117,6 +132,8 @@ public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 		return email;
 	}
 
+	
+	@Transactional
 	public String getPasswordByFirstLastName(String firstName, String lastName) {
 		Session session = null;
 		String password = "";
@@ -134,6 +151,8 @@ public class UserDaoImpl extends MainDaoImpl<User, Long> implements UserDao{
 		return password;
 	}
 
+	
+	@Transactional
 	public User getUserByEmailPassword(String email, String password) {
 		Session session = null;
 		User user = null;
